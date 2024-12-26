@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Rubik, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 90vh; /* Set max height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+#tab3 form {
+    min-width: 400px; /* Minimum width for third tab's form */
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 0.9em; /* Smaller font size for labels */
+}
+
+input {
+    font-family: inherit;
+    padding-left: 10px; /* Padding inside inputs */
+}
+
+input[type="number"], input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px; /* Add margin for spacing */
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Gap between inputs */
+    margin-bottom: 10px;
+}
+
+.flex-container .name-container,
+.flex-container .students-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.class-container h3 {
+    color: #007bff; /* Color for class name */
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+button.disabled {
+    background: #cccccc; /* Grey color for disabled buttons */
+    cursor: not-allowed;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Reduced gap between buttons */
+    justify-content: flex-end;
+    width: 100%;
+}
+
+form .error {
+    color: red;
+    font-size: 14px;
+    padding: 12px;
+    background: pink;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Add margin for spacing */
+}
+
+form .error:empty {
+    display: none;
+}
+
+/* استایل‌های جدول نتیجه */
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.result-table th,
+.result-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.result-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.result-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.result-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.pdf {
+    padding: 10px 20px;
+    border: 2px solid #B71D21;
+    background-color: white;
+    color: #B71D21;
+    font-family: inherit;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pdf:hover {
+    background-color: #B71D21;
+    color: white;
+}
+
+.xlsx {
+    padding: 10px 20px;
+    border: 2px solid #005C2F;
+    background-color: white;
+    color: #005C2F;
+    font-family: inherit;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.xlsx:hover {
+    background-color: #005C2F;
+    color: white;
+}
+
+#tab5 .button-container {
+    display: flex;
+    align-items: center;
+}
+
+#tab5 .button-container button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#tab5 .button-container button img {
+    width: 20px;
+}
+
+#resultTableContainer {
+    max-height: 80vh;
+    max-width: 95vw;
+    overflow: auto;
+}
+
+thead tr th {
+    position: sticky;
+    top: -1px;
+    background-color: #FCC737 !important;
+    z-index: 1;
+}
+
+#tab6 {
+    display: none;
+}

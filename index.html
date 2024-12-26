@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+        <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+        <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+    </head>
+    <body>
+        <div id="tab5">
+            <div id="resultTableContainer"></div>
+            <div class="button-container">
+                <button type="button" class="xlsx" onclick="generateXLSX()">
+                    <img src="https://gholamhasan.sirv.com/xlsx.png" alt="xlsx">
+                    Export XLSX
+                </button>
+                <button type="button" class="pdf" onclick="generatePDF()">
+                    <img src="https://gholamhasan.sirv.com/pdf.png" alt="pdf">
+                    Export PDF
+                </button>
+            </div>
+        </div>
+        <div id="tab6"></div>
+        <script src="./app.js"></script>
+    </body>
+</html>
