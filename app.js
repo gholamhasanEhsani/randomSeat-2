@@ -1,3 +1,4 @@
+const notyf = new Notyf();
 let data = {
     days: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8", "Day 9", "Day 10", "Day 11"],
     students: {
@@ -84,7 +85,7 @@ function shuffleArray(array) {
 
 function generateResultTable() {
     d = [];
-    clearLocalStorage();
+    clearLocalStorage(false);
     const resultTableContainer = document.getElementById('resultTableContainer');
     resultTableContainer.innerHTML = ''; // Clear previous results
 
@@ -150,16 +151,16 @@ function generateResultTable() {
 }
 
 function saveTableToLocalStorage() {
-    clearLocalStorage();
+    clearLocalStorage(false);
     const table = document.querySelector("#resultTableContainer table");
     if (table) {
         const tableHTML = table.outerHTML;
         localStorage.setItem("savedTable", tableHTML);
         localStorage.setItem("savedD", JSON.stringify(d));
         console.log(d);
-        // alert
+        notyf.success('Table and data successfully saved!');
     } else {
-        // alert
+        notyf.error('No table found to save!');
     }
 }
 
@@ -172,16 +173,18 @@ function loadTableFromLocalStorage() {
         const resultTableContainer = document.getElementById('resultTableContainer');
         resultTableContainer.innerHTML = tableHTML;
         console.log("Table loaded from localStorage");
-        // alert
+        notyf.success('Table and data successfully loaded!');
         return true;
     }
     return false;
 }
 
-const clearLocalStorage = () => {
+const clearLocalStorage = (showAlert = true) => {
     localStorage.removeItem("savedTable");
     localStorage.removeItem("savedD");
-    // alert
+    if (showAlert) {
+        notyf.success('Local storage cleared!');
+    }
 }
 
 window.onload = function () {
