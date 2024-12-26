@@ -83,6 +83,8 @@ function shuffleArray(array) {
 }
 
 function generateResultTable() {
+    d = [];
+    clearLocalStorage();
     const resultTableContainer = document.getElementById('resultTableContainer');
     resultTableContainer.innerHTML = ''; // Clear previous results
 
@@ -147,4 +149,43 @@ function generateResultTable() {
     });
 }
 
-generateResultTable();
+function saveTableToLocalStorage() {
+    clearLocalStorage();
+    const table = document.querySelector("#resultTableContainer table");
+    if (table) {
+        const tableHTML = table.outerHTML;
+        localStorage.setItem("savedTable", tableHTML);
+        localStorage.setItem("savedD", JSON.stringify(d));
+        console.log(d);
+        // alert
+    } else {
+        // alert
+    }
+}
+
+function loadTableFromLocalStorage() {
+    const savedTable = localStorage.getItem("savedTable");
+    const savedD = localStorage.getItem("savedD");
+    if (savedTable && savedD) {
+        const tableHTML = savedTable;
+        d = JSON.parse(savedD);
+        const resultTableContainer = document.getElementById('resultTableContainer');
+        resultTableContainer.innerHTML = tableHTML;
+        console.log("Table loaded from localStorage");
+        // alert
+        return true;
+    }
+    return false;
+}
+
+const clearLocalStorage = () => {
+    localStorage.removeItem("savedTable");
+    localStorage.removeItem("savedD");
+    // alert
+}
+
+window.onload = function () {
+    if (!loadTableFromLocalStorage()) {
+        generateResultTable();
+    }
+};
