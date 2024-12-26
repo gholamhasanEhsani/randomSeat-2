@@ -9,6 +9,8 @@ let data = {
 const studentList = Object.values(data.students).flat();
 let d = [];
 
+const isSaved = () => localStorage.getItem("savedTable") !== null;
+
 async function generatePDF(i = null) {
     if (i == null) {
         document.querySelectorAll('.print-button').forEach(button => {
@@ -148,6 +150,7 @@ function generateResultTable() {
             d[index].push(seatAssignments[key][index]);
         });
     });
+    updateButtons();
 }
 
 function saveTableToLocalStorage() {
@@ -157,11 +160,11 @@ function saveTableToLocalStorage() {
         const tableHTML = table.outerHTML;
         localStorage.setItem("savedTable", tableHTML);
         localStorage.setItem("savedD", JSON.stringify(d));
-        console.log(d);
         notyf.success('Table and data successfully saved!');
     } else {
         notyf.error('No table found to save!');
     }
+    updateButtons();
 }
 
 function loadTableFromLocalStorage() {
@@ -185,10 +188,25 @@ const clearLocalStorage = (showAlert = true) => {
     if (showAlert) {
         notyf.success('Local storage cleared!');
     }
+    updateButtons();
 }
 
-window.onload = function () {
-    if (!loadTableFromLocalStorage()) {
-        generateResultTable();
+function updateButtons() {
+    const saveButton = document.querySelector(".save");
+    const clearButton = document.querySelector(".clear-storage");
+    if (isSaved()) {
+        saveButton.style.display = "none";
+        clearButton.style.display = "flex";
+    } else {
+        saveButton.style.display = "flex";
+        clearButton.style.display = "none";
     }
+}
+window.onload = function () {
+    if (!isSaved()) {
+        generateResultTable();
+    } else {
+        loadTableFromLocalStorage();
+    }
+    updateButtons();
 };
